@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=, initial-scale=1.0" />
+        <title>API Test</title>
+    </head>
+    <body>
+        <img src="#" />
+        <input type="search" />
+        <button>Search</button>
+        <script>
+            const img = document.querySelector('img');
+            const input = document.querySelector('input');
+            const btn = document.querySelector('button');
+            let searchTerm = '';
+            let url = '';
+
+            btn.addEventListener('click', (e) => {
+                fetch(url, { mode: 'cors' })
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (response) {
+                        img.src = response.data.images.original.url;
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                    });
+            });
+
+            input.addEventListener('input', (e) => {
+                searchTerm = input.value;
+                url =
+                    'https://api.giphy.com/v1/gifs/translate?api_key=jzVtmtIsk26TnJ94HhKZMrSiHb4c8xRU&s=' +
+                    searchTerm;
+            });
+        </script>
+    </body>
+</html>
