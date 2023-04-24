@@ -9,7 +9,8 @@ Call the helper function to merge the two sorted halves from step 4.
 Return the merged array as the final sorted result.
 
  */
-const testArr = [1, 4, 2, 5, 8, 6, 7];
+
+const testArr = [1, 4, 2, 5];
 
 function mergeSort(inputArr) {
     if (inputArr.length <= 1) {
