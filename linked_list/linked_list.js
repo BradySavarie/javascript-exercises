@@ -12,7 +12,11 @@ class LinkedList {
         lastNode.nextNode = node;
     }
 
-    prepend(value) {}
+    prepend(value) {
+        const node = new Node(value);
+        node.nextNode = this.head;
+        this.head = node;
+    }
 }
 
 class Node {
@@ -28,3 +32,8 @@ const n2 = new Node(2);
 n1.nextNode = n2;
 
 const linkedList = new LinkedList(n1);
+console.log(linkedList);
+linkedList.append(3);
+console.log(linkedList);
+linkedList.prepend(4);
+console.log(linkedList);
