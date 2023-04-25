@@ -17,23 +17,23 @@ class LinkedList {
         node.nextNode = this.head;
         this.head = node;
     }
+
+    size() {
+        let count = 0;
+        let node = this.head;
+        while (node) {
+            count++;
+            node = node.next;
+        }
+        return count;
+    }
 }
 
 class Node {
-    constructor(value) {
+    constructor(value = null) {
         this.value = value;
         this.nextNode = null;
     }
 }
 
 // test list
-const n1 = new Node(1);
-const n2 = new Node(2);
-n1.nextNode = n2;
-
-const linkedList = new LinkedList(n1);
-console.log(linkedList);
-linkedList.append(3);
-console.log(linkedList);
-linkedList.prepend(4);
-console.log(linkedList);
