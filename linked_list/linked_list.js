@@ -42,12 +42,67 @@ class LinkedList {
         return count;
     }
 
-    head() {
+    getHead() {
         return this.head;
     }
 
-    tail() {
+    getTail() {
         return this.tail;
+    }
+
+    at(index) {
+        let count = 0;
+        let node = this.head;
+        while (count < index) {
+            node = node.nextNode;
+            count++;
+        }
+        return node;
+    }
+
+    pop() {
+        let targetNode = this.head;
+        while (targetNode.nextNode != this.tail) {
+            targetNode = targetNode.nextNode;
+        }
+        targetNode.nextNode = null;
+        this.tail = targetNode;
+    }
+
+    contains(value) {
+        let targetNode = this.head;
+        while (targetNode.nextNode) {
+            if (targetNode.value === value) {
+                return true;
+            }
+            targetNode = targetNode.nextNode;
+        }
+        return false;
+    }
+
+    find(value) {
+        let index = 0;
+        let targetNode = this.head;
+        while (targetNode) {
+            if (targetNode.value === value) {
+                return index;
+            }
+            index++;
+            targetNode = targetNode.nextNode;
+        }
+        return null;
+    }
+
+    toString() {
+        let currentNode = this.head;
+        let currentValue = currentNode.value;
+        let string = currentValue.toString();
+        while (currentNode) {
+            currentValue = currentNode.value;
+            string += ' -> ' + currentValue.toString();
+            currentNode = currentNode.nextNode;
+        }
+        return string + ' -> null';
     }
 }
 
@@ -59,8 +114,8 @@ class Node {
 }
 
 // test list
-
-const linkedList = new LinkedList(new Node(1));
+const n1 = new Node(0);
+const linkedList = new LinkedList(n1);
+linkedList.append(1);
 linkedList.append(2);
-linkedList.prepend(3);
-console.log(linkedList);
+console.log(linkedList.toString());
